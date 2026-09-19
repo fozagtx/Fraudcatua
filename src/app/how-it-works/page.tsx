@@ -11,7 +11,7 @@ const CAPABILITIES = [
   {
     n: "02",
     title: "Judge",
-    body: "An open-weight model (via Neon AI Gateway) reads the transcript, extracts the caller's claims, red flags, and any numbers mentioned, then weighs it all into a verdict.",
+    body: "An open-weight model (via Nebius Token Factory) reads the transcript, extracts the caller's claims, red flags, and any numbers mentioned, then weighs it all into a verdict.",
   },
   {
     n: "03",

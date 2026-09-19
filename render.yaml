@@ -8,9 +8,7 @@ services:
     envVars:
       - key: SPEECHMATICS_API_KEY
         sync: false
-      - key: NEON_AI_GATEWAY_TOKEN
-        sync: false
-      - key: NEON_AI_GATEWAY_BASE_URL
+      - key: NEBIUS_API_KEY
         sync: false
       - key: FIRECRAWL_API_KEY
         sync: false

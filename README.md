@@ -7,14 +7,14 @@ Upload a recording of a suspicious phone call (mobile-money scams in Ghana — "
 ## Features
 
 - **Transcribe** — Speechmatics batch transcription with speaker diarization (`enhanced` operating point), grouped into timestamped speaker turns.
-- **Judge** — an open-weight model via Neon AI Gateway (`gpt-oss-120b` by default) extracts the impersonated service, scam type, claims, red flags, and numbers mentioned, then delivers a verdict with confidence, evidence quotes, and next steps.
+- **Judge** — an open-weight model via Nebius Token Factory (`gpt-oss-120b` by default) extracts the impersonated service, scam type, claims, red flags, and numbers mentioned, then delivers a verdict with confidence, evidence quotes, and next steps.
 - **Verify** — each factual claim is checked live via Firecrawl web search, plus a search for the impersonated service's official support number.
 - **Report & remember** — report scammer numbers to a shared Postgres table; lookups and a recent-reports feed warn the next victim. Optional gift points (10/report) with opt-in.
 - **No mock mode** — all API calls are real; a missing env var returns a clear `{"error": "..._API_KEY is not set"}` JSON error.
 
 ## Stack
 
-Next.js 15+ App Router · TypeScript strict · Tailwind v4 · Vercel AI SDK (`ai` + `@neondatabase/ai-sdk-provider`) · `@speechmatics/batch-client` · `firecrawl` · `@neondatabase/serverless` (raw SQL, no ORM) · `page-mascot` · Vitest.
+Next.js 15+ App Router · TypeScript strict · Tailwind v4 · Vercel AI SDK (`ai` + `@ai-sdk/openai-compatible`) · `@speechmatics/batch-client` · `firecrawl` · `@neondatabase/serverless` (raw SQL, no ORM) · `page-mascot` · Vitest.
 
 ## Environment variables
 
@@ -23,8 +23,7 @@ Only secrets live in env vars. Non-secret settings (model id, API base URLs, lan
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `SPEECHMATICS_API_KEY` | yes | Speechmatics batch API key |
-| `NEON_AI_GATEWAY_TOKEN` | yes | Neon AI Gateway platform token |
-| `NEON_AI_GATEWAY_BASE_URL` | yes | Neon AI Gateway branch endpoint |
+| `NEBIUS_API_KEY` | yes | Nebius Token Factory key, from https://tokenfactory.nebius.com |
 | `FIRECRAWL_API_KEY` | yes* | Firecrawl API key (*claim checks degrade to "unverified" without it) |
 | `DATABASE_URL` | no | Postgres URL, required for `/api/reports*` and saved analyses `/a/[id]`; analysis works without it |
 
@@ -46,7 +45,7 @@ npm run lint && npx tsc --noEmit
 
 1. Push this repo.
 2. In Render: **New → Blueprint**, pick the repo — `render.yaml` defines the web service (`npm ci && npm run build`, `npm start`).
-3. Fill the env vars marked `sync: false` in the Render dashboard (Neon AI Gateway URL + token, Speechmatics key, Firecrawl key, DATABASE_URL).
+3. Fill the env vars marked `sync: false` in the Render dashboard (Speechmatics key, Nebius Token Factory key, Firecrawl key, DATABASE_URL).
 4. Health check hits `/`.
 
 ## How the pipeline works

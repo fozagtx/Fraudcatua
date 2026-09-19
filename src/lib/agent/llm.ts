@@ -1,4 +1,4 @@
-import { createNeon } from "@neondatabase/ai-sdk-provider";
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { generateObject, generateText } from "ai";
 import type { ZodType } from "zod";
 
@@ -7,10 +7,7 @@ import { config } from "../../config";
 export const MODEL_ID = config.model;
 
 export function missingGatewayEnvs(): string[] {
-  return [
-    !config.neonGatewayBaseUrl && "NEON_AI_GATEWAY_BASE_URL",
-    !process.env.NEON_AI_GATEWAY_TOKEN && "NEON_AI_GATEWAY_TOKEN",
-  ].filter(Boolean) as string[];
+  return process.env.NEBIUS_API_KEY ? [] : ["NEBIUS_API_KEY"];
 }
 
 function requireGateway(): void {
@@ -22,11 +19,12 @@ function requireGateway(): void {
 
 function model() {
   requireGateway();
-  const neon = createNeon({
-    baseURL: config.neonGatewayBaseUrl,
-    apiKey: process.env.NEON_AI_GATEWAY_TOKEN,
+  const nebius = createOpenAICompatible({
+    name: "nebius",
+    baseURL: config.nebius.apiUrl,
+    apiKey: process.env.NEBIUS_API_KEY!,
   });
-  return neon(MODEL_ID);
+  return nebius.chatModel(config.model);
 }
 
 function extractJson(text: string): string {
