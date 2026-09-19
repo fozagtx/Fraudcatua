@@ -12,7 +12,7 @@ export function dbConfigured(): boolean {
 
 export function ensureSchema(): Promise<void> {
   if (!sql) {
-    return Promise.reject(new Error("DATABASE_URL is not set"));
+    return Promise.reject(new Error("Connect the following envs: DATABASE_URL"));
   }
   if (!schemaPromise) {
     schemaPromise = (async () => {

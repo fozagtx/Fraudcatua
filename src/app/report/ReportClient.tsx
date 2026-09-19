@@ -117,7 +117,7 @@ export function ReportClient() {
         Report a scam number.
       </h1>
       <p className="mt-4 max-w-xl text-ink/70">
-        Every report feeds one shared memory of scammer numbers — and earns you gift
+        Every report feeds one shared memory of scammer numbers, and earns you gift
         points if you opt in.
       </p>
 
@@ -168,7 +168,7 @@ export function ReportClient() {
                   value={service}
                   onChange={(e) => setService(e.target.value)}
                 >
-                  <option value="">—</option>
+                  <option value=""></option>
                   {SERVICES.map((s) => (
                     <option key={s} value={s}>
                       {s}
@@ -186,7 +186,7 @@ export function ReportClient() {
                   value={scamType}
                   onChange={(e) => setScamType(e.target.value)}
                 >
-                  <option value="">—</option>
+                  <option value=""></option>
                   {SCAM_TYPES.map(([v, l]) => (
                     <option key={v} value={v}>
                       {l}
@@ -212,7 +212,7 @@ export function ReportClient() {
               )}
               <div>
                 <label className={labelCls} htmlFor="contact">
-                  Email or phone — to receive gifts (optional)
+                  Email or phone, to receive gifts (optional)
                 </label>
                 <input
                   id="contact"
@@ -269,7 +269,7 @@ export function ReportClient() {
                 ) : (
                   <>
                     <p className="font-medium">
-                      {lookup.number} — reported {lookup.count}×
+                      {lookup.number}, reported {lookup.count}×
                     </p>
                     {lookup.services.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-2">
@@ -301,10 +301,10 @@ export function ReportClient() {
             <div className="mt-4 divide-y divide-hairline border-t border-b border-hairline">
               {recent == null ? (
                 <p className="py-4 text-sm text-muted">
-                  Reports need a database — set DATABASE_URL.
+                  Reports need a database. Set DATABASE_URL.
                 </p>
               ) : recent.reports.length === 0 ? (
-                <p className="py-4 text-sm text-muted">No reports yet — be the first.</p>
+                <p className="py-4 text-sm text-muted">No reports yet. Be the first.</p>
               ) : (
                 recent.reports.map((r, i) => (
                   <div key={i} className="flex items-center justify-between gap-4 py-3">

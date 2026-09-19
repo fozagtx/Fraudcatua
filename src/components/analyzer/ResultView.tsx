@@ -171,7 +171,7 @@ export function ResultView({
                       onClick={() => playEvidence(e.segmentIds)}
                     >
                       ▶ Play {fmtTime(segById.get(e.segmentIds[0])?.start ?? 0)}
-                      –{fmtTime(segById.get(e.segmentIds[e.segmentIds.length - 1])?.end ?? 0)}
+                      {" to "}{fmtTime(segById.get(e.segmentIds[e.segmentIds.length - 1])?.end ?? 0)}
                     </button>
                   )}
                 </div>
@@ -288,7 +288,7 @@ export function ResultView({
             />
           ) : (
             <div className="rounded-card bg-stone p-5 text-sm text-ink/70">
-              Audio isn&apos;t stored — upload the recording again to replay.
+              Audio isn&apos;t stored. Upload the recording again to replay.
             </div>
           )}
           <div className="mt-6">

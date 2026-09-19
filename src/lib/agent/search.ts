@@ -1,4 +1,5 @@
 import Firecrawl from "firecrawl";
+import { config } from "../../config";
 
 export type WebHit = { title: string; url: string; description: string };
 
@@ -9,10 +10,10 @@ const TIMEOUT_MS = 8000;
 export async function webSearch(query: string): Promise<SearchOutcome> {
   const apiKey = process.env.FIRECRAWL_API_KEY;
   if (!apiKey) {
-    return { hits: [], error: "FIRECRAWL_API_KEY is not set" };
+    return { hits: [], error: "Connect the following envs: FIRECRAWL_API_KEY" };
   }
   try {
-    const firecrawl = new Firecrawl({ apiKey });
+    const firecrawl = new Firecrawl({ apiKey, apiUrl: config.firecrawl.apiUrl });
     const result = await Promise.race([
       firecrawl.search(query, { limit: 4 }),
       new Promise<never>((_, reject) =>

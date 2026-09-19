@@ -46,7 +46,7 @@ export function Uploader({
         <div>
           <p className="font-medium">{file.name}</p>
           <p className="mono-label mt-1 text-muted">
-            {fmtSize(file.size)} — {file.type || "audio/video"}
+            {fmtSize(file.size)} · {file.type || "audio/video"}
           </p>
           <button
             type="button"
@@ -61,7 +61,7 @@ export function Uploader({
         <div>
           <p className="font-display text-lg">Drop a call recording here</p>
           <p className="mt-1 text-sm text-muted">
-            Audio or video, up to 25 MB — mp3, m4a, wav, ogg, mp4…
+            Audio or video, up to 25 MB: mp3, m4a, wav, ogg, mp4…
           </p>
           <button
             type="button"

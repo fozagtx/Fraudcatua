@@ -14,7 +14,7 @@ export default async function AnalysisPage({
   if (!dbConfigured() || !sql) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-20">
-        <p className="text-error">DATABASE_URL is not set — saved analyses are unavailable.</p>
+        <p className="text-error">Connect the following envs: DATABASE_URL</p>
       </div>
     );
   }

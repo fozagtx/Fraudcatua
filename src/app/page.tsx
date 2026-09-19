@@ -13,14 +13,12 @@ function ConfigHint() {
       .then((r) => r.json())
       .then((h) => {
         const m: string[] = [];
-        if (!h.configured?.speechmatics)
-          m.push("Speechmatics key not configured — set SPEECHMATICS_API_KEY on Render");
-        if (!h.configured?.neonGateway)
-          m.push("AI gateway not configured — set NEON_AI_GATEWAY_BASE_URL and NEON_AI_GATEWAY_TOKEN on Render");
-        if (!h.configured?.firecrawl)
-          m.push("Firecrawl key not configured — set FIRECRAWL_API_KEY on Render");
-        if (!h.configured?.database)
-          m.push("Database not configured — set DATABASE_URL on Render (needed for reports & saved analyses)");
+        if (!h.configured?.speechmatics) m.push("SPEECHMATICS_API_KEY");
+        if (!h.configured?.neonGateway) {
+          m.push("NEON_AI_GATEWAY_BASE_URL", "NEON_AI_GATEWAY_TOKEN");
+        }
+        if (!h.configured?.firecrawl) m.push("FIRECRAWL_API_KEY");
+        if (!h.configured?.database) m.push("DATABASE_URL");
         setMissing(m);
       })
       .catch(() => {});
@@ -28,11 +26,17 @@ function ConfigHint() {
   if (missing.length === 0) return null;
   return (
     <div className="mx-auto mt-6 max-w-2xl rounded-card border border-hairline px-4 py-3">
-      {missing.map((m) => (
-        <p key={m} className="mono-label text-muted">
-          {m}
-        </p>
-      ))}
+      <span className="mono-label text-muted">Connect the following envs</span>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {missing.map((m) => (
+          <span
+            key={m}
+            className="mono-label rounded-pill bg-stone px-3 py-1 text-ink"
+          >
+            {m}
+          </span>
+        ))}
+      </div>
     </div>
   );
 }
@@ -47,10 +51,9 @@ function HomeInner() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-20 pb-16">
-        <span className="mono-label text-muted">Scam call analyzer</span>
-        <div className="mt-4 flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col-reverse items-start gap-8 sm:flex-row sm:items-end sm:justify-between">
           <h1 className="max-w-3xl font-display text-[44px] leading-none tracking-tight sm:text-[88px]">
-            Hear the scam before the money leaves the phone.
+            Understand where your money goes before you hit send.
           </h1>
           <div className="shrink-0">
             <Mascot size={140} />
@@ -58,8 +61,7 @@ function HomeInner() {
         </div>
         <p className="mt-6 max-w-xl text-lg text-ink/70">
           Upload a recording of a suspicious call. Fraudcatua transcribes it, checks
-          the caller&apos;s claims on the web, and shows you the evidence — with
-          timestamps.
+          the caller&apos;s claims, and shows you the evidence with timestamps.
         </p>
       </section>
       <section className="mx-auto max-w-6xl px-6 pb-20">
