@@ -2,11 +2,13 @@ import { createNeon } from "@neondatabase/ai-sdk-provider";
 import { generateObject, generateText } from "ai";
 import type { ZodType } from "zod";
 
-export const MODEL_ID = process.env.FRAUDCATUA_MODEL ?? "gpt-oss-120b";
+import { config } from "../../config";
+
+export const MODEL_ID = config.model;
 
 export function missingGatewayEnvs(): string[] {
   return [
-    !process.env.NEON_AI_GATEWAY_BASE_URL && "NEON_AI_GATEWAY_BASE_URL",
+    !config.neonGatewayBaseUrl && "NEON_AI_GATEWAY_BASE_URL",
     !process.env.NEON_AI_GATEWAY_TOKEN && "NEON_AI_GATEWAY_TOKEN",
   ].filter(Boolean) as string[];
 }
@@ -21,7 +23,7 @@ function requireGateway(): void {
 function model() {
   requireGateway();
   const neon = createNeon({
-    baseURL: process.env.NEON_AI_GATEWAY_BASE_URL,
+    baseURL: config.neonGatewayBaseUrl,
     apiKey: process.env.NEON_AI_GATEWAY_TOKEN,
   });
   return neon(MODEL_ID);

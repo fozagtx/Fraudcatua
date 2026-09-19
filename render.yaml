@@ -4,18 +4,14 @@ services:
     runtime: node
     buildCommand: npm ci && npm run build
     startCommand: npm start
-    healthCheckPath: /
+    healthCheckPath: /api/health
     envVars:
-      - key: NEON_AI_GATEWAY_BASE_URL
+      - key: SPEECHMATICS_API_KEY
         sync: false
       - key: NEON_AI_GATEWAY_TOKEN
         sync: false
-      - key: FRAUDCATUA_MODEL
-        value: gpt-oss-120b
-      - key: SPEECHMATICS_API_KEY
+      - key: NEON_AI_GATEWAY_BASE_URL
         sync: false
-      - key: SPEECHMATICS_LANGUAGE
-        value: en
       - key: FIRECRAWL_API_KEY
         sync: false
       - key: DATABASE_URL

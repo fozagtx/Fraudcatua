@@ -1,4 +1,5 @@
 import { BatchClient } from "@speechmatics/batch-client";
+import { config } from "../config";
 import type { TranscriptSegment, TranscriptWord } from "./types";
 
 const GAP_BREAK_S = 1.2;
@@ -85,12 +86,16 @@ export async function transcribeFile(
   if (!apiKey) {
     throw new Error("Connect the following envs: SPEECHMATICS_API_KEY");
   }
-  const client = new BatchClient({ apiKey, appId: "fraudcatua" });
+  const client = new BatchClient({
+    apiKey,
+    apiUrl: config.speechmatics.apiUrl,
+    appId: "fraudcatua",
+  });
   const res = await client.transcribe(
     file,
     {
       transcription_config: {
-        language: process.env.SPEECHMATICS_LANGUAGE ?? "en",
+        language: config.speechmatics.language,
         operating_point: "enhanced",
         diarization: "speaker",
       },

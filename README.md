@@ -18,15 +18,15 @@ Next.js 15+ App Router · TypeScript strict · Tailwind v4 · Vercel AI SDK (`ai
 
 ## Environment variables
 
+Only secrets live in env vars. Non-secret settings (model id, API base URLs, language, mascot paths) live in `src/config.ts`.
+
 | Variable | Required | Purpose |
 | --- | --- | --- |
-| `NEON_AI_GATEWAY_BASE_URL` | yes | Neon AI Gateway base URL (branch-scoped) |
-| `NEON_AI_GATEWAY_TOKEN` | yes | Gateway platform token |
-| `FRAUDCATUA_MODEL` | no | Model id (default `gpt-oss-120b`) |
 | `SPEECHMATICS_API_KEY` | yes | Speechmatics batch API key |
-| `SPEECHMATICS_LANGUAGE` | no | Transcription language (default `en`) |
-| `FIRECRAWL_API_KEY` | yes* | Firecrawl search key (*claim checks degrade to "unverified" without it) |
-| `DATABASE_URL` | no | Postgres URL — required for `/api/reports*` and saved analyses `/a/[id]`; analysis works without it |
+| `NEON_AI_GATEWAY_TOKEN` | yes | Neon AI Gateway platform token |
+| `NEON_AI_GATEWAY_BASE_URL` | yes | Neon AI Gateway branch endpoint |
+| `FIRECRAWL_API_KEY` | yes* | Firecrawl API key (*claim checks degrade to "unverified" without it) |
+| `DATABASE_URL` | no | Postgres URL, required for `/api/reports*` and saved analyses `/a/[id]`; analysis works without it |
 
 See `.env.example`.
 
