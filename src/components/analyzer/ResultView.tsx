@@ -271,7 +271,7 @@ export function ResultView({
             </>
           )}
 
-          <Link href="/" className="btn-pill btn-secondary mt-12">
+          <Link href="/analyze" className="btn-pill btn-secondary mt-12">
             Analyze another
           </Link>
         </div>

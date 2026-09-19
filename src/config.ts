@@ -8,4 +8,5 @@ export const config = {
     directions: "/mascots/afro-directions.webp",
     reactions: "/mascots/afro-reactions.webp",
   },
+  finance: { defaultDays: 90, maxEmails: 50, duplicateWindowDays: 45 },
 } as const;

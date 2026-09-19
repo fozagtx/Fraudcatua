@@ -24,6 +24,7 @@ Only secrets live in env vars. Non-secret settings (model id, API base URLs, lan
 | --- | --- | --- |
 | `SPEECHMATICS_API_KEY` | yes | Speechmatics batch API key |
 | `NEBIUS_API_KEY` | yes | Nebius Token Factory key, from https://tokenfactory.nebius.com |
+| `COMPOSIO_API_KEY` | for /finance | Composio key for Gmail access, from https://platform.composio.dev |
 | `FIRECRAWL_API_KEY` | yes* | Firecrawl API key (*claim checks degrade to "unverified" without it) |
 | `DATABASE_URL` | no | Postgres URL, required for `/api/reports*` and saved analyses `/a/[id]`; analysis works without it |
 
