@@ -30,8 +30,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               Fraudcatua
             </Link>
             <div className="hidden items-center gap-8 text-sm sm:flex">
-              <Link href="/" className="hover:text-blue transition-colors">
+              <Link href="/analyze" className="hover:text-blue transition-colors">
                 Analyze
+              </Link>
+              <Link href="/finance" className="hover:text-blue transition-colors">
+                Finance
               </Link>
               <Link href="/report" className="hover:text-blue transition-colors">
                 Report a number
@@ -40,7 +43,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                 How it works
               </Link>
             </div>
-            <Link href="/" className="btn-pill btn-primary">
+            <Link href="/analyze" className="btn-pill btn-primary">
               Analyze a call
             </Link>
           </nav>
@@ -50,8 +53,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <div className="mx-auto flex max-w-6xl flex-col gap-4 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
             <span className="mono-label text-white/60">FRAUDCATUA</span>
             <div className="flex gap-6 text-sm text-white/60">
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link href="/analyze" className="hover:text-white transition-colors">
                 Analyze
+              </Link>
+              <Link href="/finance" className="hover:text-white transition-colors">
+                Finance
               </Link>
               <Link href="/report" className="hover:text-white transition-colors">
                 Report a number

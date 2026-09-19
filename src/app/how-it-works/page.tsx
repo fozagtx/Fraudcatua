@@ -68,6 +68,11 @@ export default function HowItWorks() {
           person who gets a call from that number sees it was reported before, and
           you earn gift points for verified reports.
         </p>
+        <p className="mt-4 max-w-2xl text-white/80">
+          The same agent approach powers the finance watcher: connect Gmail and it
+          extracts every invoice, applies duplicate and sender-mismatch rules, then
+          writes a plain-language finding for each one before you pay twice.
+        </p>
         <Link href="/report" className="btn-pill mt-8 inline-flex bg-white text-ink hover:bg-white/90">
           Report a number
         </Link>

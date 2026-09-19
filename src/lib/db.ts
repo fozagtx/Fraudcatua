@@ -45,6 +45,14 @@ export function ensureSchema(): Promise<void> {
         CREATE INDEX IF NOT EXISTS reports_phone_normalized_idx
         ON reports (phone_normalized)
       `;
+      await sql`
+        CREATE TABLE IF NOT EXISTS finance_scans (
+          id text PRIMARY KEY,
+          user_id text NOT NULL,
+          report jsonb,
+          created_at timestamptz DEFAULT now()
+        )
+      `;
     })().catch((err) => {
       schemaPromise = null;
       throw err;

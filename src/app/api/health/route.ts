@@ -9,6 +9,7 @@ export async function GET() {
       speechmatics: Boolean(process.env.SPEECHMATICS_API_KEY),
       nebius: Boolean(process.env.NEBIUS_API_KEY),
       firecrawl: Boolean(process.env.FIRECRAWL_API_KEY),
+      composio: Boolean(process.env.COMPOSIO_API_KEY),
       database: Boolean(process.env.DATABASE_URL),
     },
   });

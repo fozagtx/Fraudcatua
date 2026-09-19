@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@ai-sdk/openai-compatible": "^3.0.48",
+    "@composio/core": "^0.18.1",
     "@neondatabase/serverless": "^1.1.0",
     "@speechmatics/batch-client": "^5.4.2",
     "ai": "^7.0.107",

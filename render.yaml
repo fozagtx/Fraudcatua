@@ -10,6 +10,8 @@ services:
         sync: false
       - key: NEBIUS_API_KEY
         sync: false
+      - key: COMPOSIO_API_KEY
+        sync: false
       - key: FIRECRAWL_API_KEY
         sync: false
       - key: DATABASE_URL
