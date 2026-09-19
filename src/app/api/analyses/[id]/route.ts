@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   if (!dbConfigured() || !sql) {
-    return NextResponse.json({ error: "DATABASE_URL is not set" }, { status: 500 });
+    return NextResponse.json({ error: "Connect the following envs: DATABASE_URL" }, { status: 500 });
   }
   const { id } = await params;
   await ensureSchema();

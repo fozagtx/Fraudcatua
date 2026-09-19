@@ -83,7 +83,7 @@ export async function transcribeFile(
 ): Promise<{ segments: TranscriptSegment[]; durationS: number }> {
   const apiKey = process.env.SPEECHMATICS_API_KEY;
   if (!apiKey) {
-    throw new Error("SPEECHMATICS_API_KEY is not set");
+    throw new Error("Connect the following envs: SPEECHMATICS_API_KEY");
   }
   const client = new BatchClient({ apiKey, appId: "fraudcatua" });
   const res = await client.transcribe(

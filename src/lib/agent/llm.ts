@@ -4,12 +4,17 @@ import type { ZodType } from "zod";
 
 export const MODEL_ID = process.env.FRAUDCATUA_MODEL ?? "gpt-oss-120b";
 
+export function missingGatewayEnvs(): string[] {
+  return [
+    !process.env.NEON_AI_GATEWAY_BASE_URL && "NEON_AI_GATEWAY_BASE_URL",
+    !process.env.NEON_AI_GATEWAY_TOKEN && "NEON_AI_GATEWAY_TOKEN",
+  ].filter(Boolean) as string[];
+}
+
 function requireGateway(): void {
-  if (!process.env.NEON_AI_GATEWAY_BASE_URL) {
-    throw new Error("NEON_AI_GATEWAY_BASE_URL is not set");
-  }
-  if (!process.env.NEON_AI_GATEWAY_TOKEN) {
-    throw new Error("NEON_AI_GATEWAY_TOKEN is not set");
+  const missing = missingGatewayEnvs();
+  if (missing.length > 0) {
+    throw new Error(`Connect the following envs: ${missing.join(", ")}`);
   }
 }
 

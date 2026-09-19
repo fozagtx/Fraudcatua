@@ -19,7 +19,7 @@ const POINTS_PER_REPORT = 10;
 
 export async function POST(req: NextRequest) {
   if (!dbConfigured() || !sql) {
-    return NextResponse.json({ error: "DATABASE_URL is not set" }, { status: 500 });
+    return NextResponse.json({ error: "Connect the following envs: DATABASE_URL" }, { status: 500 });
   }
   const parsed = bodySchema.safeParse(await req.json().catch(() => null));
   if (!parsed.success) {
@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   if (!dbConfigured() || !sql) {
-    return NextResponse.json({ error: "DATABASE_URL is not set" }, { status: 500 });
+    return NextResponse.json({ error: "Connect the following envs: DATABASE_URL" }, { status: 500 });
   }
   const number = req.nextUrl.searchParams.get("number");
   if (!number) {

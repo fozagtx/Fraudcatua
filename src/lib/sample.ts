@@ -111,7 +111,7 @@ export const SAMPLE_RESULT: AnalysisResult = {
   confidence: 96,
   headline: "Caller fakes an MTN promo to steal your MoMo one-time code.",
   explanation:
-    "The caller claims you won free money, then asks you to read back a code sent to your phone — that code is a MoMo authorization OTP, and reading it out hands over your wallet. MTN never asks for codes over the phone. The urgency ('expires in two minutes') is a classic pressure tactic.",
+    "The caller claims you won free money, then asks you to read back a code sent to your phone. That code is a MoMo authorization OTP, and reading it out hands over your wallet. MTN never asks for codes over the phone. The urgency ('expires in two minutes') is a classic pressure tactic.",
   evidence: [
     {
       title: "Asks you to read out a one-time code",
@@ -122,7 +122,7 @@ export const SAMPLE_RESULT: AnalysisResult = {
     },
     {
       title: "Fake prize claim",
-      why: "'You won free money' is the standard hook for MoMo promo scams — no such promotion was found in official MTN announcements.",
+      why: "'You won free money' is the standard hook for MoMo promo scams. No such promotion was found in official MTN announcements.",
       quote: "You have won free money in our MoMo promotion.",
       segmentIds: [2],
       severity: "high",
@@ -142,7 +142,7 @@ export const SAMPLE_RESULT: AnalysisResult = {
       finding:
         "No official MTN Ghana promotion matching this description was found; MTN warns customers about exactly this promo-impersonation scam.",
       sources: [
-        { title: "MTN Ghana – Fraud awareness", url: "https://mtn.com.gh" },
+        { title: "MTN Ghana: Fraud awareness", url: "https://mtn.com.gh" },
       ],
     },
   ],
@@ -154,7 +154,7 @@ export const SAMPLE_RESULT: AnalysisResult = {
     },
   ],
   whatToDo: [
-    "Hang up — do not read any code to the caller.",
+    "Hang up. Do not read any code to the caller.",
     "Never share OTPs, PINs, or MoMo codes on a call.",
     "Dial 100 to confirm with MTN directly.",
     "Report the caller's number below to warn others.",

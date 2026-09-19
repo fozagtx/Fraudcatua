@@ -9,7 +9,7 @@ const MAX_BYTES = 25 * 1024 * 1024;
 export async function POST(req: NextRequest) {
   if (!process.env.SPEECHMATICS_API_KEY) {
     return NextResponse.json(
-      { error: "SPEECHMATICS_API_KEY is not set" },
+      { error: "Connect the following envs: SPEECHMATICS_API_KEY" },
       { status: 500 },
     );
   }
@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
     /\.(mp3|m4a|mp4|wav|ogg|oga|webm|aac|flac|amr|3gp)$/i.test(file.name);
   if (!okType) {
     return NextResponse.json(
-      { error: "Unsupported file type — upload an audio or video recording" },
+      { error: "Unsupported file type. Upload an audio or video recording" },
       { status: 415 },
     );
   }

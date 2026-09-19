@@ -9,7 +9,7 @@ const TIMEOUT_MS = 8000;
 export async function webSearch(query: string): Promise<SearchOutcome> {
   const apiKey = process.env.FIRECRAWL_API_KEY;
   if (!apiKey) {
-    return { hits: [], error: "FIRECRAWL_API_KEY is not set" };
+    return { hits: [], error: "Connect the following envs: FIRECRAWL_API_KEY" };
   }
   try {
     const firecrawl = new Firecrawl({ apiKey });

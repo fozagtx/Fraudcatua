@@ -12,9 +12,9 @@ const body = Inter({ variable: "--font-body-var", subsets: ["latin"] });
 const mono = IBM_Plex_Mono({ variable: "--font-mono-var", weight: "400", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Fraudcatua — hear the scam before the money leaves the phone",
+  title: "Fraudcatua: understand where your money goes before you hit send",
   description:
-    "Upload a phone-call recording. Fraudcatua transcribes it, checks the caller's claims on the web, and shows you the evidence.",
+    "Upload a phone-call recording. Fraudcatua transcribes it, checks the caller's claims, and shows you the evidence.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

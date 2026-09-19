@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { analyzeTranscript } from "@/lib/agent/analyze";
+import { missingGatewayEnvs } from "@/lib/agent/llm";
 import { dbConfigured, ensureSchema, sql } from "@/lib/db";
 
 export const runtime = "nodejs";
@@ -24,13 +25,10 @@ const bodySchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  if (!process.env.NEON_AI_GATEWAY_BASE_URL || !process.env.NEON_AI_GATEWAY_TOKEN) {
+  const missingEnvs = missingGatewayEnvs();
+  if (missingEnvs.length > 0) {
     return NextResponse.json(
-      {
-        error: !process.env.NEON_AI_GATEWAY_BASE_URL
-          ? "NEON_AI_GATEWAY_BASE_URL is not set"
-          : "NEON_AI_GATEWAY_TOKEN is not set",
-      },
+      { error: `Connect the following envs: ${missingEnvs.join(", ")}` },
       { status: 500 },
     );
   }
