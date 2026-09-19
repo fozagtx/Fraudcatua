@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-canvas: #ffffff;
+  --color-ink: #212121;
+  --color-primary: #17171c;
+  --color-deep-green: #003c33;
+  --color-stone: #eeece7;
+  --color-coral: #ff7759;
+  --color-coral-soft: #ffad9b;
+  --color-blue: #1863dc;
+  --color-hairline: #d9d9dd;
+  --color-muted: #93939f;
+  --color-focus: #4c6ee6;
+  --color-error: #b30000;
+
+  --radius-pill: 32px;
+  --radius-band: 22px;
+  --radius-card: 8px;
+
+  --font-display: var(--font-display-var), sans-serif;
+  --font-body: var(--font-body-var), sans-serif;
+  --font-mono: var(--font-mono-var), monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.mono-label {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.28px;
+}
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-pill);
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 180ms ease-out, color 180ms ease-out,
+    border-color 180ms ease-out, transform 150ms ease-out;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: #2a2a31;
+}
+.btn-primary:disabled {
+  background: var(--color-muted);
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  border: 1px solid var(--color-hairline);
+  color: var(--color-ink);
+  background: transparent;
+}
+.btn-secondary:hover {
+  border-color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes flash {
+  0% {
+    background-color: rgba(255, 119, 89, 0.35);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+.flash {
+  animation: flash 1600ms ease-out;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 1400ms ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .flash,
+  .pulse-dot {
+    animation: none;
+  }
+  .btn-pill {
+    transition: none;
+  }
+}
