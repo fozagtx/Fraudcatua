@@ -14,9 +14,7 @@ function ConfigHint() {
       .then((h) => {
         const m: string[] = [];
         if (!h.configured?.speechmatics) m.push("SPEECHMATICS_API_KEY");
-        if (!h.configured?.neonGateway) {
-          m.push("NEON_AI_GATEWAY_BASE_URL", "NEON_AI_GATEWAY_TOKEN");
-        }
+        if (!h.configured?.nebius) m.push("NEBIUS_API_KEY");
         if (!h.configured?.firecrawl) m.push("FIRECRAWL_API_KEY");
         if (!h.configured?.database) m.push("DATABASE_URL");
         setMissing(m);

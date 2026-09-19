@@ -7,9 +7,7 @@ export async function GET() {
     ok: true,
     configured: {
       speechmatics: Boolean(process.env.SPEECHMATICS_API_KEY),
-      neonGateway: Boolean(
-        process.env.NEON_AI_GATEWAY_BASE_URL && process.env.NEON_AI_GATEWAY_TOKEN,
-      ),
+      nebius: Boolean(process.env.NEBIUS_API_KEY),
       firecrawl: Boolean(process.env.FIRECRAWL_API_KEY),
       database: Boolean(process.env.DATABASE_URL),
     },

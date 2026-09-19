@@ -163,5 +163,5 @@ export const SAMPLE_RESULT: AnalysisResult = {
   scamType: "otp_theft",
   numbersMentioned: ["024 555 0137"],
   priorReports: [{ number: "233245550137", count: 3 }],
-  model: "gpt-oss-120b",
+  model: "openai/gpt-oss-120b",
 };
