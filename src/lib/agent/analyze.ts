@@ -105,7 +105,9 @@ async function priorReportCounts(numbers: string[]): Promise<{ number: string; c
 
 export async function analyzeTranscript(
   segments: TranscriptSegment[],
+  signal?: AbortSignal,
 ): Promise<AnalysisResult> {
+  signal?.throwIfAborted();
   const lines = transcriptLines(segments);
 
   const extraction: Extraction = await askJson(
@@ -114,18 +116,24 @@ export async function analyzeTranscript(
     `Transcript of a recorded phone call:\n\n${lines}`,
   );
 
+  signal?.throwIfAborted();
+  const searchOptions = { signal, sessionId: crypto.randomUUID() };
   const claimSearches = await Promise.all(
     extraction.claims.slice(0, 3).map((c) =>
       webSearch(
         `${c.text} ${extraction.impersonatedService ?? ""} Ghana scam`.trim(),
+        searchOptions,
       ),
     ),
   );
+  signal?.throwIfAborted();
   const supportSearch = extraction.impersonatedService
     ? await webSearch(
         `${extraction.impersonatedService} official customer care number Ghana`,
+        searchOptions,
       )
     : { hits: [] as const, error: undefined };
+  signal?.throwIfAborted();
   const priorReports = await priorReportCounts(extraction.numbersMentioned);
 
   const searchBlock = claimSearches

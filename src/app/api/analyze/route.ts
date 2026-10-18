@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
   }
   const { segments, fileName, durationS } = parsed.data;
   try {
-    const result = await analyzeTranscript(segments);
+    const result = await analyzeTranscript(segments, req.signal);
     let id: string | null = null;
     if (dbConfigured() && sql) {
       try {

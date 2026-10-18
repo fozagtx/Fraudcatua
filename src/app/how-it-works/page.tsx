@@ -16,7 +16,7 @@ const CAPABILITIES = [
   {
     n: "03",
     title: "Verify",
-    body: "Each factual claim is checked live on the web with Firecrawl: 'MTN gives free money', fake fees, official support numbers. Evidence is grounded, not guessed.",
+    body: "Each factual claim is checked live on the web: 'MTN gives free money', fake fees, official support numbers. Evidence is grounded, not guessed.",
   },
 ];
 
@@ -44,7 +44,7 @@ export default function HowItWorks() {
           {[
             ["Transcribe", "Your recording goes to Speechmatics; words come back grouped into speaker turns with timestamps."],
             ["Extract", "The model pulls out who is being impersonated, the scam pattern, verifiable claims, red flags, and phone numbers, each tied to transcript segments."],
-            ["Verify", "Firecrawl searches the web for each claim and for the impersonated service's official support number. Reported numbers are checked against the community database."],
+            ["Verify", "Web search checks each claim and the impersonated service's official support number. Reported numbers are checked against the community database."],
             ["Judge", "A second pass weighs the extraction, the web evidence, and prior reports into a verdict with confidence, evidence quotes, and what to do next."],
           ].map(([t, b], i) => (
             <li key={t} className="flex gap-6 border-b border-hairline pb-4">
