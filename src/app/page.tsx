@@ -15,7 +15,6 @@ function ConfigHint() {
         const m: string[] = [];
         if (!h.configured?.speechmatics) m.push("SPEECHMATICS_API_KEY");
         if (!h.configured?.nebius) m.push("NEBIUS_API_KEY");
-        if (!h.configured?.firecrawl) m.push("FIRECRAWL_API_KEY");
         if (!h.configured?.database) m.push("DATABASE_URL");
         setMissing(m);
       })
